@@ -50,7 +50,7 @@
         android:name="cn.ucai.superwechat.DemoApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="超级大微信">
+        android:label="@string/app_name">
         <activity
             android:name="cn.ucai.superwechat.ui.MainActivity"
             android:launchMode="singleTask"
