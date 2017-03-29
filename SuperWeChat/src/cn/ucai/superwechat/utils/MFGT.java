@@ -6,6 +6,7 @@ import android.content.Intent;
 import cn.ucai.superwechat.R;
 import cn.ucai.superwechat.ui.LoginActivity;
 import cn.ucai.superwechat.ui.MainActivity;
+import cn.ucai.superwechat.ui.RegisterActivity;
 
 /**
  * Created by Moon on 2017/3/16.
@@ -31,5 +32,9 @@ public class MFGT {
 
     public static void gotoLogin(Activity activity) {
         startActivity(activity, LoginActivity.class);
+    }
+
+    public static void gotoRegister(Activity activity) {
+        startActivity(activity, RegisterActivity.class);
     }
 }

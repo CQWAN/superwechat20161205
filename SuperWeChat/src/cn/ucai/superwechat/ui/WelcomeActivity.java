@@ -1,10 +1,10 @@
 package cn.ucai.superwechat.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import cn.ucai.superwechat.R;
+import cn.ucai.superwechat.utils.MFGT;
 
 public class WelcomeActivity extends BaseActivity {
 
@@ -14,9 +14,9 @@ public class WelcomeActivity extends BaseActivity {
         setContentView(R.layout.activity_welcome);
     }
     public void login(View view) {
-        startActivity(new Intent(this,LoginActivity.class));
+        MFGT.gotoLogin(WelcomeActivity.this);
     }
     public void register(View view) {
-        startActivity(new Intent(this,RegisterActivity.class));
+        MFGT.gotoRegister(WelcomeActivity.this);
     }
 }
