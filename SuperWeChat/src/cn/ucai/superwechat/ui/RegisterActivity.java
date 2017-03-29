@@ -98,6 +98,7 @@ public class RegisterActivity extends BaseActivity {
         userModel.register(RegisterActivity.this, username, userNick, pwd, new OnCompleteListener<String>() {
             @Override
             public void onSuccess(String result) {
+
                 
             }
 
