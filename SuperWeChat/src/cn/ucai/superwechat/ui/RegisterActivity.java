@@ -15,7 +15,6 @@ package cn.ucai.superwechat.ui;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -29,10 +28,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.ucai.superwechat.R;
 import cn.ucai.superwechat.SuperWeChatHelper;
+import cn.ucai.superwechat.db.IUserModel;
+import cn.ucai.superwechat.db.OnCompleteListener;
+import cn.ucai.superwechat.db.UserModel;
 
 /**
  * register screen
- *
  */
 public class RegisterActivity extends BaseActivity {
     @BindView(R.id.username)
@@ -43,13 +44,16 @@ public class RegisterActivity extends BaseActivity {
     EditText mEtPassword;
     @BindView(R.id.confirm_password)
     EditText confirmPwdEditText;
+    ProgressDialog pd;
     String username;
     String userNick;
     String pwd;
     String confirm_pwd;
+    IUserModel userModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        userModel = new UserModel();
         setContentView(R.layout.em_activity_register);
         ButterKnife.bind(this);
     }
@@ -82,18 +86,29 @@ public class RegisterActivity extends BaseActivity {
     }
     public void register(View view) {
         if (checkedInput()) {
-
-        }
-
-
-        if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(pwd)) {
-            final ProgressDialog pd = showDialog();
-            refisterHx(pd);
+            // 注册自己的服务器
+            registerMyServer();
+            // 成功后注册环信的服务器
+            registerHxServer();
 
         }
     }
 
-    private void refisterHx(final ProgressDialog pd) {
+    private void registerMyServer() {
+        userModel.register(RegisterActivity.this, username, userNick, pwd, new OnCompleteListener<String>() {
+            @Override
+            public void onSuccess(String result) {
+                
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        });
+    }
+
+    private void registerHxServer() {
         new Thread(new Runnable() {
             public void run() {
                 try {
@@ -132,13 +147,10 @@ public class RegisterActivity extends BaseActivity {
             }
         }).start();
     }
-
-    @NonNull
-    private ProgressDialog showDialog() {
-        ProgressDialog pd = new ProgressDialog(this);
+    private void showDialog() {
+        pd = new ProgressDialog(this);
         pd.setMessage(getResources().getString(R.string.Is_the_registered));
         pd.show();
-        return pd;
     }
 
     public void back(View view) {
