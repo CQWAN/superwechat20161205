@@ -40,4 +40,13 @@ public class UserModel implements IUserModel {
                 .targetClass(String.class)
                 .execute(completeListener);
     }
+
+    @Override
+    public void loadUserInfo(Context context, String userName, OnCompleteListener<String> completeListener) {
+        OkHttpUtils<String> okHttpUtils = new OkHttpUtils<>(context);
+        okHttpUtils.setRequestUrl(I.REQUEST_FIND_USER)
+                .addParam(I.User.USER_NAME,userName)
+                .targetClass(String.class)
+                .execute(completeListener);
+    }
 }
