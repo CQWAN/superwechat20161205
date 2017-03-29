@@ -7,6 +7,8 @@ import cn.ucai.superwechat.R;
 import cn.ucai.superwechat.ui.LoginActivity;
 import cn.ucai.superwechat.ui.MainActivity;
 import cn.ucai.superwechat.ui.RegisterActivity;
+import cn.ucai.superwechat.ui.SplashActivity;
+import cn.ucai.superwechat.ui.WelcomeActivity;
 
 /**
  * Created by Moon on 2017/3/16.
@@ -36,5 +38,9 @@ public class MFGT {
 
     public static void gotoRegister(Activity activity) {
         startActivity(activity, RegisterActivity.class);
+    }
+
+    public static void gotoWelcome(SplashActivity splashActivity) {
+        startActivity(splashActivity, WelcomeActivity.class);
     }
 }

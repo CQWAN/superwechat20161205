@@ -4,22 +4,8 @@
     android:layout_height="match_parent"
     android:background="#eff2f6"
     android:orientation="vertical" >
-
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
-        android:visibility="gone">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerInParent="true"
-            android:src="@drawable/em_welcom_logo" />
-    </RelativeLayout>
-
-    <RelativeLayout
+        android:layout_marginTop="80dp"
         android:layout_width="match_parent"
         android:layout_height="0dip"
         android:layout_weight="1" >
@@ -91,7 +77,7 @@
             android:layout_below="@id/rl_password"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="50dp"
             android:orientation="vertical" >
             <Button
                 android:layout_marginTop="30dp"
@@ -108,7 +94,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="18sp" />
             <Button
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="200dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dip"
