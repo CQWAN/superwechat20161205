@@ -5,6 +5,7 @@ import android.content.Context;
 import com.hyphenate.EMValueCallBack;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.easeui.domain.EaseUser;
+import com.hyphenate.easeui.domain.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,6 @@ import cn.ucai.superwechat.SuperWeChatHelper;
 import cn.ucai.superwechat.db.IUserModel;
 import cn.ucai.superwechat.db.OnCompleteListener;
 import cn.ucai.superwechat.db.UserModel;
-import com.hyphenate.easeui.domain.User;
 import cn.ucai.superwechat.utils.PreferenceManager;
 import cn.ucai.superwechat.utils.Result;
 import cn.ucai.superwechat.utils.ResultUtils;
@@ -51,6 +51,7 @@ public class UserProfileManager {
 		if (sdkInited) {
 			return true;
 		}
+		appContext = context;
 		ParseManager.getInstance().onInit(context);
 		syncContactInfosListeners = new ArrayList<SuperWeChatHelper.DataSyncListener>();
 		sdkInited = true;

@@ -61,7 +61,6 @@ import cn.ucai.superwechat.runtimepermissions.PermissionsResultAction;
 
 @SuppressLint("NewApi")
 public class MainActivity extends BaseActivity {
-
 	protected static final String TAG = "MainActivity";
 	// textview for unread message count
 	private TextView unreadLabel;

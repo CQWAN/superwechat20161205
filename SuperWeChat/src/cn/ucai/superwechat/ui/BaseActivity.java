@@ -40,5 +40,4 @@ public class BaseActivity extends EaseBaseActivity {
         // umeng
         MobclickAgent.onPause(this);
     }
-
 }

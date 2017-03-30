@@ -19,10 +19,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import cn.ucai.superwechat.SuperWeChatHelper;
 
-public class DbOpenHelper extends SQLiteOpenHelper{
+public class SuperWeChatOpenHelper extends SQLiteOpenHelper{
 
 	private static final int DATABASE_VERSION = 6;
-	private static DbOpenHelper instance;
+	private static SuperWeChatOpenHelper instance;
 
 	private static final String USERNAME_TABLE_CREATE = "CREATE TABLE "
 			+ UserDao.TABLE_NAME + " ("
@@ -54,13 +54,13 @@ public class DbOpenHelper extends SQLiteOpenHelper{
             + UserDao.COLUMN_NAME_DISABLED_GROUPS + " TEXT, "
             + UserDao.COLUMN_NAME_DISABLED_IDS + " TEXT);";
 	
-	private DbOpenHelper(Context context) {
+	private SuperWeChatOpenHelper(Context context) {
 		super(context, getUserDatabaseName(), null, DATABASE_VERSION);
 	}
 	
-	public static DbOpenHelper getInstance(Context context) {
+	public static SuperWeChatOpenHelper getInstance(Context context) {
 		if (instance == null) {
-			instance = new DbOpenHelper(context.getApplicationContext());
+			instance = new SuperWeChatOpenHelper(context.getApplicationContext());
 		}
 		return instance;
 	}
@@ -112,5 +112,4 @@ public class DbOpenHelper extends SQLiteOpenHelper{
 	        instance = null;
 	    }
 	}
-	
 }
