@@ -15,7 +15,9 @@ public class User implements Serializable {
 	 * initial letter for nickname
 	 */
 	protected String initialLetter;
-	
+	private Serializable nick;
+	private String avatar;
+
 	public User() {
 		super();
 	}
@@ -132,5 +134,13 @@ public class User implements Serializable {
 	public String getAvatar() {
 		String path = "http://101.251.196.90:8000/SuperWeChatServerV2.0/downloadAvatar?name_or_hxid="+getMUserName()+"&avatarType=user_avatar&m_avatar_suffix="+getMAvatarSuffix()+"&updatetime="+getMAvatarLastUpdateTime();
 		return path;
+	}
+
+	public void setNick(Serializable nick) {
+		this.nick = nick;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 }
