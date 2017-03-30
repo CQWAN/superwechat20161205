@@ -13,7 +13,7 @@ import cn.ucai.superwechat.SuperWeChatHelper;
 import cn.ucai.superwechat.db.IUserModel;
 import cn.ucai.superwechat.db.OnCompleteListener;
 import cn.ucai.superwechat.db.UserModel;
-import cn.ucai.superwechat.domain.User;
+import com.hyphenate.easeui.domain.User;
 import cn.ucai.superwechat.utils.PreferenceManager;
 import cn.ucai.superwechat.utils.Result;
 import cn.ucai.superwechat.utils.ResultUtils;
