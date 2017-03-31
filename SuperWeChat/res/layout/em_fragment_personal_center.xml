@@ -12,7 +12,7 @@
             android:id="@+id/ivMyAvatar"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/default_avatar"/>
+            android:src="@drawable/timg"/>
         <TextView
             android:id="@+id/tvMyNick"
             android:layout_width="wrap_content"

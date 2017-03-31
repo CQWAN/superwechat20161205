@@ -20,4 +20,13 @@ public class PersonalCenterFragment extends Fragment {
         View view = inflater.inflate(R.layout.em_fragment_personal_center, container, false);
         return view;
     }
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        initData();
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    private void initData() {
+
+    }
 }

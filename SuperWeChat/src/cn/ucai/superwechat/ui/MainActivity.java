@@ -616,6 +616,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
                     @Override
                     public void onProgress(int progress, String status) {
+
                     }
 
                     @Override
