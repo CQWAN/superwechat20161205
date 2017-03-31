@@ -127,13 +127,14 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     private void initFragment() {
         conversationListFragment = new ConversationListFragment();
         contactListFragment = new ContactListFragment();
-        SettingsFragment settingFragment = new SettingsFragment();
-        fragments = new Fragment[]{conversationListFragment, contactListFragment, settingFragment};
+        DicoverFragment dicoverFragment = new DicoverFragment();
+        PersonalCenterFragment personalCenterFragment = new PersonalCenterFragment();
+        fragments = new Fragment[]{conversationListFragment, contactListFragment, dicoverFragment,personalCenterFragment};
         mAdapter = new MainTabAdpter(getSupportFragmentManager());
         mAdapter.addFragment(conversationListFragment,getString(R.string.app_name));
         mAdapter.addFragment(contactListFragment,getString(R.string.contacts));
-        mAdapter.addFragment(settingFragment,getString(R.string.me));
-        mAdapter.addFragment(new DicoverFragment(),getString(R.string.discover));
+        mAdapter.addFragment(dicoverFragment,getString(R.string.discover));
+        mAdapter.addFragment(personalCenterFragment,getString(R.string.me));
         mLayoutViewpage.setAdapter(mAdapter);
         mLayoutTabhost.setChecked(0);
         mLayoutViewpage.setOnPageChangeListener(this);
@@ -358,7 +359,6 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     @Override // ViewPager滑动状态发生改变的方法
     public void onPageScrollStateChanged(int state) {
-
     }
 
     @Override // TabHost被选中的方法
