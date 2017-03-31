@@ -3,12 +3,15 @@ package cn.ucai.superwechat.utils;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.easemob.redpacketui.ui.activity.RPChangeActivity;
+
 import cn.ucai.superwechat.R;
 import cn.ucai.superwechat.ui.LoginActivity;
 import cn.ucai.superwechat.ui.MainActivity;
 import cn.ucai.superwechat.ui.RegisterActivity;
 import cn.ucai.superwechat.ui.SettingsActivity;
 import cn.ucai.superwechat.ui.SplashActivity;
+import cn.ucai.superwechat.ui.UserProfileActivity;
 import cn.ucai.superwechat.ui.WelcomeActivity;
 
 /**
@@ -49,7 +52,10 @@ public class MFGT {
         startActivity(activity, SettingsActivity.class);
     }
 
-    public static void gotoMoney(Activity activity) {
-        startActivity(activity,MoneyActivity.class);
+    public static void gotoRPChange(Activity activity) {
+        startActivity(activity, RPChangeActivity.class);
+    }
+    public static void gotoUserProfile(Activity activity) {
+        startActivity(activity, UserProfileActivity.class);
     }
 }

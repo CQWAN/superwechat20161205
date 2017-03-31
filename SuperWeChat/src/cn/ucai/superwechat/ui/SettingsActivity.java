@@ -30,7 +30,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.easemob.redpacketui.utils.RedPacketUtil;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMOptions;
@@ -78,7 +77,6 @@ public class SettingsActivity extends BaseActivity implements OnClickListener {
 
     private LinearLayout blacklistContainer;
 
-    private LinearLayout userProfileContainer;
 
     /**
      * logout
@@ -149,7 +147,6 @@ public class SettingsActivity extends BaseActivity implements OnClickListener {
         switch_delete_msg_when_exit_group = (EaseSwitchButton) findViewById(R.id.switch_delete_msg_when_exit_group);
         switch_auto_accept_group_invitation = (EaseSwitchButton) findViewById(R.id.switch_auto_accept_group_invitation);
         switch_adaptive_video_encode = (EaseSwitchButton) findViewById(R.id.switch_adaptive_video_encode);
-        LinearLayout llChange = (LinearLayout) findViewById(R.id.ll_change);
         logoutBtn = (Button) findViewById(R.id.btn_logout);
         if(!TextUtils.isEmpty(EMClient.getInstance().getCurrentUser())){
             logoutBtn.setText(getString(R.string.button_logout) + "(" + EMClient.getInstance().getCurrentUser() + ")");
@@ -161,7 +158,6 @@ public class SettingsActivity extends BaseActivity implements OnClickListener {
         textview2 = (TextView) findViewById(R.id.textview2);
 
         blacklistContainer = (LinearLayout) findViewById(R.id.ll_black_list);
-        userProfileContainer = (LinearLayout) findViewById(R.id.ll_user_profile);
         llDiagnose=(LinearLayout) findViewById(R.id.ll_diagnose);
         pushNick=(LinearLayout) findViewById(R.id.ll_set_push_nick);
         edit_custom_appkey = (EditText) findViewById(R.id.edit_custom_appkey);
@@ -170,7 +166,6 @@ public class SettingsActivity extends BaseActivity implements OnClickListener {
         chatOptions = EMClient.getInstance().getOptions();
 
         blacklistContainer.setOnClickListener(this);
-        userProfileContainer.setOnClickListener(this);
         rl_switch_notification.setOnClickListener(this);
         rl_switch_sound.setOnClickListener(this);
         rl_switch_vibrate.setOnClickListener(this);
@@ -187,7 +182,6 @@ public class SettingsActivity extends BaseActivity implements OnClickListener {
         rl_switch_adaptive_video_encode.setOnClickListener(this);
         rl_push_settings.setOnClickListener(this);
         ll_call_option.setOnClickListener(this);
-        llChange.setOnClickListener(this);
         rl_mail_log.setOnClickListener(this);
 
         // the vibrate and sound notification are allowed or not?
@@ -276,11 +270,6 @@ public class SettingsActivity extends BaseActivity implements OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            //red packet code : 进入零钱页面
-            case R.id.ll_change:
-                RedPacketUtil.startChangeActivity(SettingsActivity.this);
-                break;
-            //end of red packet code
             case R.id.rl_switch_notification:
                 if (notifySwitch.isSwitchOpen()) {
                     notifySwitch.closeSwitch();
@@ -386,10 +375,6 @@ public class SettingsActivity extends BaseActivity implements OnClickListener {
             case R.id.ll_call_option:
                 startActivity(new Intent(SettingsActivity.this, CallOptionActivity.class));
                 break;
-            case R.id.ll_user_profile:
-                startActivity(new Intent(SettingsActivity.this, UserProfileActivity.class).putExtra("setting", true)
-                        .putExtra("username", EMClient.getInstance().getCurrentUser()));
-                break;
             case R.id.switch_custom_server:
                 if(customServerSwitch.isSwitchOpen()){
                     customServerSwitch.closeSwitch();
@@ -439,6 +424,7 @@ public class SettingsActivity extends BaseActivity implements OnClickListener {
                         // show login screen
                         SettingsActivity.this.finish();
                         startActivity(new Intent(SettingsActivity.this, LoginActivity.class));
+
                     }
                 });
             }
@@ -501,7 +487,7 @@ public class SettingsActivity extends BaseActivity implements OnClickListener {
                 startActivity(intent);
             } catch (final Exception e) {
                 e.printStackTrace();
-                runOnUiThread(new Runnable() {
+                SettingsActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         Toast.makeText(SettingsActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();

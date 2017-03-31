@@ -1,5 +1,6 @@
 package cn.ucai.superwechat.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -7,8 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.easemob.redpacketui.utils.RedPacketUtil;
+import com.hyphenate.chat.EMClient;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.ucai.superwechat.Constant;
 import cn.ucai.superwechat.R;
 import cn.ucai.superwechat.utils.MFGT;
 
@@ -44,15 +49,34 @@ public class PersonalCenterFragment extends Fragment {
      */
     private void initData() {
 
+
     }
 
-    @OnClick(R.id.ivMySettings)
+    @OnClick(R.id.layout_settings)
     public void settings() {
         MFGT.gotoSettings(getActivity());
     }
 
-    @OnClick(R.id.ivMyMoney)
-    public void money() {
-        MFGT.gotoMoney(getActivity());
+    @OnClick(R.id.layout_money)
+    public void change() {
+        RedPacketUtil.startChangeActivity(getActivity());
+    }
+    @OnClick(R.id.firstBar)
+    public void firstBar(){
+        MFGT.gotoUserProfile(getActivity());
+    }
+    @OnClick(R.id.ivMyAvatar)
+    public void avatar() {
+        startActivity(new Intent(getActivity(), UserProfileActivity.class).putExtra("setting", true)
+                .putExtra("username", EMClient.getInstance().getCurrentUser()));
+    }
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if(((MainActivity)getActivity()).isConflict){
+            outState.putBoolean("isConflict", true);
+        }else if(((MainActivity)getActivity()).getCurrentAccountRemoved()){
+            outState.putBoolean(Constant.ACCOUNT_REMOVED, true);
+        }
     }
 }
