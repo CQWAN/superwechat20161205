@@ -7,6 +7,7 @@ import cn.ucai.superwechat.R;
 import cn.ucai.superwechat.ui.LoginActivity;
 import cn.ucai.superwechat.ui.MainActivity;
 import cn.ucai.superwechat.ui.RegisterActivity;
+import cn.ucai.superwechat.ui.SettingsActivity;
 import cn.ucai.superwechat.ui.SplashActivity;
 import cn.ucai.superwechat.ui.WelcomeActivity;
 
@@ -42,5 +43,13 @@ public class MFGT {
 
     public static void gotoWelcome(SplashActivity splashActivity) {
         startActivity(splashActivity, WelcomeActivity.class);
+    }
+
+    public static void gotoSettings(Activity activity) {
+        startActivity(activity, SettingsActivity.class);
+    }
+
+    public static void gotoMoney(Activity activity) {
+        startActivity(activity,MoneyActivity.class);
     }
 }
